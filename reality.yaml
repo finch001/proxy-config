@@ -1,0 +1,29 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+
+proxies:
+  - name: Reality
+    type: vless
+    server: 165.245.183.187
+    port: 443
+    uuid: c657a6b9-f76a-4630-9c09-74c294ba0639
+    tls: true
+    udp: true
+    network: tcp
+    flow: xtls-rprx-vision
+    servername: www.cloudflare.com
+
+    reality-opts:
+      public-key: yWIF8L6EWFIITWMy2O7l2xZBPn6Axm7s5LxFOfgbvz4
+      short-id: 6ba85179e30d4fc2
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - Reality
+
+rules:
+  - MATCH,🚀 节点选择
